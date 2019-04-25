@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <style>
+    body {
+  padding: 2em;
+}
+
+[type=submit] {
+  padding: 0.5em 2em;
+}
+
+.add-new-person {
+  background: #6688dd;
+  border-radius: 0.25em;
+  color: #fff;
+  display: inline-block;
+  padding: 0.5em;
+  text-decoration: none;
+}
+View Compiled 
+
+  </style>>
+  <body>
+    <div class="container">
+      <h1>Add a projects</h1>
+      <br>
+      <form action = "/add_entry" method="post">
+    <div id="people-container">
+        <h3>Person 1:</h3>
+        <p>
+            <label>First name</label><br>
+            <input name="name" value="{{
+          request.form.project }}">
+        </p>
+
+        <p>
+            <label>Last name</label><br>
+            <input name="last" value="{{
+          request.form.project }}">
+        </p>
+
+        <p>
+            <label>Email</label><br>
+            <input name="email" value="{{
+          request.form.project }}">
+        </p>
+    </div>
+
+    <a href="javascript:;" id="add-new-person">Add new person</a>
+
+    <p>
+        <input type="submit">
+    </p>
+</form>
+
+<script>
+let i = 2;
+document.getElementById('add-new-person').onclick = function () {
+    let template = `
+        <h3>Person ${i}:</h3>
+        <p>
+            <label>First name</label><br>
+            <input name="name${i}" value="{{
+          request.form.project }}">
+        </p>
+
+        <p>
+            <label>Last name</label><br>
+            <input name="last${i}" value="{{
+          request.form.project }}">
+        </p>
+
+        <p>
+            <label>Email</label><br>
+            <input name="email${i}" value="{{
+          request.form.project }}">
+        </p>`;
+
+    let container = document.getElementById('people-container');
+    let div = document.createElement('div');
+    div.innerHTML = template;
+    container.appendChild(div);
+
+    i++;
+}
+</script>
+    </div>
+  </body>
+</html>

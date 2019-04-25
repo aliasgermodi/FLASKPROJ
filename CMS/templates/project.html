@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add a projects</h1>
+      <br>
+      <form action="/add_project" method="post">
+        <input type="text" placeholder="Project Name" name="project" value="{{
+          request.form.project }}">
+        <input type="text" placeholder="Country" name="country" value="{{
+          request.form.project}}">
+        <input type="text" placeholder="Area" name="area" value="{{
+          request.form.project}}">
+        <input type="text" placeholder="Zone" name="zone" value="{{
+          request.form.project}}">
+        <input type="text" placeholder="Device" name="device" value="{{
+          request.form.project}}">
+        <input class="btn btn-default" type="submit" value="Add">
+      </form>
+      <br>
+      <h3>Select the projects</h3>
+      <select>
+        <option value="volvo">project1</option>
+        <option value="saab">project2</option>
+        <option value="mercedes">project3</option>
+        <option value="audi">project4</option>
+      </select><br>
+
+      {% for proj in project %}
+        <tr>
+          <td>{{ proj['project'] }}</td><br>
+        </tr>
+      {% endfor %}
+    </div>
+  </body>
+</html>

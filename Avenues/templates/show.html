@@ -1,0 +1,6 @@
+
+{% for data in user %}
+	<h1>{{ data['username'] }}</h1>
+	<p>{{data['cms_image']}}</p>
+	<img src = "/filename/{{data ['cms_image']}}">
+{% endfor %}
