@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import request
 from pymongo import MongoClient
 from bson.json_util import dumps
@@ -18,18 +18,21 @@ def index():
 @app.route('/api/plan', methods = ['POST'])
 def plan_create():
 	try:
+
 		data = json.loads(request.data)
 		ids = data['id']
 		name = data['name']
 		amount = data['amount']
 		currency = data['currency']
-		status = db.plan.insert({
+		status = {}
+		status = db.plan.insert([{
                 "id" : ids,
                 "name" : name,
-                "price":{"amount":amount,"currency":currency}
-                #"time": user_time,
-                #"ls": last_seen,
-            })
+                "price":{"amount":amount,"currency":currency}},
+                {
+                "id" : ids,
+                "name" : name,
+                "price":{"amount":amount,"currency":currency}}])
 		return dumps({'message' : 'SUCCESS'})
 	except Exception, e:
 		return dumps({'error' : str(e)})

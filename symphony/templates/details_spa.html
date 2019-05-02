@@ -103,7 +103,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href="/dropsession">
                <img src="static/images/logout.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">LOGOUT</font>
             </a>
           </li>
@@ -137,10 +137,10 @@
                     <th scope="row">
                     <div class="row">
                       <div class="col-sm-4">
-                          <h4>Name:  {{ data['name'] }}</h4>
+                          <h4>Name:  {{ data['sname'] }}</h4>
                       </div>
                       <div class="col-sm-4">
-                          <h4>Phone Number:  {{ data['phone'] }}</h4>
+                          <h4>Phone Number:  {{ data['sphone'] }}</h4>
                       </div>  
                       <div class="col-sm-4">
                           <h4>Email:  {{ data['email'] }}</h4>
@@ -188,7 +188,7 @@
                   <tr>
                     <th scope="row">
                     <h4>How did you know about us?</h4>{{ data['us'] }}<br>  
-                    <h4>Yes, I agree to receive commercial messages, email from Radisson Hotel Group relating to Hotel products and services including<br> special offers and promotions, I understand that even if I don’t check this box, I may receive transactional messages. I may opt<br> out of marketing communication at any time and will be given the option to do so in each communication.</h4>{{ data['p'] }}<br>
+                    <h4>Yes, I agree to receive commercial messages, email from Radisson Hotel Group relating to Hotel products and services including<br> special offers and promotions, I understand that even if I don’t check this box, I may receive transactional messages. I may opt<br> out of marketing communication at any time and will be given the option to do so in each communication.</h4>{{ data['sp'] }}<br>
                     <h4>How would you rate our SPA Receptionist?</h4> 
                     <img id="myImage1" style="width: 1.525rem;"><br>
                     <h4>How would you rate our SPA Therapist?</h4>
@@ -207,10 +207,10 @@
                     <img id="myImage8" style="width: 1.525rem;"><br>
                     <h4>How would you rate our Gym?</h4>
                     <img id="myImage9" style="width: 1.525rem;"><br>
-                    <h4>Have you ever been in Six Senses Spa before?</h4>{{ data['q10'] }}<br>
-                    <h4>Will you enthusiastically recommend our spa to a friend or a colleague?</h4>{{ data['q11'] }}<br>
+                    <h4>Have you ever been in Six Senses Spa before?</h4>{{ data['sq10'] }}<br>
+                    <h4>Will you enthusiastically recommend our spa to a friend or a colleague?</h4>{{ data['sq11'] }}<br>
                     <h4>Please provide name of any host who has been exceeding your expectation during your time at our SPA</h4>{{ data['name_spa'] }}<br>
-                    <h4>Comments</h4>{{ data['cm'] }}<br>
+                    <h4>Comments</h4>{{ data['scm'] }}<br>
 
 
                     <br><br>
@@ -237,7 +237,7 @@
   <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <script>
 function changeImage() {
-  var answer1 = {{ data['q1'] }};
+  var answer1 = {{ data['sq1'] }};
   var image1 = document.getElementById("myImage1");
 
   if (answer1 === 1) {
@@ -254,7 +254,7 @@ function changeImage() {
 
 
   
-  var answer2 = {{ data['q2'] }};
+  var answer2 = {{ data['sq2'] }};
   var image2 = document.getElementById("myImage2");
 
   if (answer2 === 1) {
@@ -271,7 +271,7 @@ function changeImage() {
 
 
 
-  var answer3 = {{ data['q3'] }};
+  var answer3 = {{ data['sq3'] }};
   var image3 = document.getElementById("myImage3");
 
   if (answer3 === 1) {
@@ -288,7 +288,7 @@ function changeImage() {
 
 
 
-  var answer4 = {{ data['q4'] }};
+  var answer4 = {{ data['sq4'] }};
   var image4 = document.getElementById("myImage4");
 
   if (answer4 === 1) {
@@ -305,7 +305,7 @@ function changeImage() {
 
 
 
-  var answer5 = {{ data['q5'] }};
+  var answer5 = {{ data['sq5'] }};
   var image5 = document.getElementById("myImage5");
 
   if (answer5 === 1) {
@@ -321,7 +321,7 @@ function changeImage() {
   }
 
 
-  var answer6 = {{ data['q6'] }};
+  var answer6 = {{ data['sq6'] }};
   var image6 = document.getElementById("myImage6");
 
   if (answer6 === 1) {
@@ -339,7 +339,7 @@ function changeImage() {
 
 
 
-var answer7 = {{ data['q7'] }};
+var answer7 = {{ data['sq7'] }};
   var image7 = document.getElementById("myImage7");
 
   if (answer7 === 1) {
@@ -357,7 +357,7 @@ var answer7 = {{ data['q7'] }};
 
 
 
-var answer8 = {{ data['q8'] }};
+var answer8 = {{ data['sq8'] }};
   var image8 = document.getElementById("myImage8");
 
   if (answer8 === 1) {
@@ -374,7 +374,7 @@ var answer8 = {{ data['q8'] }};
 
 
 
-var answer9 = {{ data['q9'] }};
+var answer9 = {{ data['sq9'] }};
   var image9 = document.getElementById("myImage9");
 
   if (answer9 === 1) {

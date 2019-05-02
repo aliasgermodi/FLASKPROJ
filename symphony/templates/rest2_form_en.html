@@ -178,7 +178,7 @@ body{
                 <div class="col-md-6 col-md-offset-3 form-container" style="background-image: linear-gradient(to bottom right, #d3bc92 0%, #bc9a5c 100%); ">
                     <h2>We'd appreciate your Feedback</h2> 
                     <br>
-                    <form role="form" method="post" id="reused_form" onSubmit="alert('Thank you for your feedback.')";>
+                    <form role="form" method="post" id="reused_form">
 
                         <div class="row">
                             <div class="col-sm-6 form-group">
@@ -210,67 +210,57 @@ body{
                             </div>
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-sm-6 form-group">
-                                <label for="visitdate"> Date of Visit</label>
-                                <input type="date" class="form-control" id="date" name="DOV" required>
-                            </div>
-                        </div>
-
-
-
                            <label> How did you know about us?</label><br>
                              <div class="row">
                               <div class="col-sm-5 form-group">
-                              	<label class="checkbox-inline check1"  style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_1">Butler&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1"  style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Butler">Butler&nbsp&nbsp&nbsp</label>
                               </div>
                               <div class="col-sm-7 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_2"> Resort/Hotel reservation&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Resort/Hotel"> Resort/Hotel reservation&nbsp&nbsp&nbsp</label>
                               </div>
                              </div>
                              <div class="row">
                               <div class="col-sm-5 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_3"> Travel Agent/Tour Operator&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Travel Agent/Tour Operator"> Travel Agent/Tour Operator&nbsp&nbsp&nbsp</label>
                               </div>
                               <div class="col-sm-7 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_4">  Word of Mouth&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Word of Mouth">  Word of Mouth&nbsp&nbsp&nbsp</label>
                               </div>
                              </div>
                              <div class="row">
                               <div class="col-sm-5 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_5">  Magazines&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Magazines">  Magazines&nbsp&nbsp&nbsp</label>
                               </div>
                               <div class="col-sm-7 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                               <input type="checkbox" name="US" value="US_6"> Other RHG/Six Senses Hotels or resorts&nbsp&nbsp&nbsp</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                               <input type="checkbox" name="US" value="Other RHG/Six Senses Hotels or resorts"> Other RHG/Six Senses Hotels or resorts&nbsp&nbsp&nbsp</label>
                               </div>
                              </div>
                              <div class="row">
                               <div class="col-sm-5 form-group">
-                              	<label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="US_7">Others</label>
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Others">Others</label>
                               </div>
                              </div>
                                 <br>
                         
                          <label style="text-align: justify;">Yes, I agree to receive commercial messages, email from Radisson Hotel Group relating to Hotel products and services including special offers and promotions, I understand that even if I don’t check this box, I may receive transactional messages. I may opt out of marketing communication at any time and will be given the option to do so in each communication.  </label><br>     
                               
-                              <input type="radio" name="P" value="P_Y" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
+                              <input type="radio" name="P" value="Yes" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
                               
-                              <input type="radio" name="P" value="P_N"><label>&nbspNo</label>
+                              <input type="radio" name="P" value="No"><label>&nbspNo</label>
                             <br><br>
 
                         <label>What did you come here for?</label><br>
-                           <input type="radio" name="MEAL" value="M_1" required> <label>Meal&nbsp&nbsp&nbsp</label>
-                           <input type="radio" name="MEAL" value="M_2"> <label>Breakfast&nbsp&nbsp&nbsp</label>
-                           <input type="radio" name="MEAL" value="M_3"> <label>Lunch&nbsp&nbsp&nbsp</label>
-                           <input type="radio" name="MEAL" value="M_4"> <label>Dinner</label>
+                           <input type="radio" name="MEAL" value="Meal" required> <label>Meal&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Breakfast"> <label>Breakfast&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Lunch"> <label>Lunch&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Dinner"> <label>Dinner</label>
                            <br>
 
                          <br>
@@ -421,9 +411,9 @@ body{
 
                              <label>Did the manager visit your table?</label><br>     
                               
-                              <input type="radio" name="Q10" value="Q10_Y" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
+                              <input type="radio" name="Q10" value="Yes" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
                               
-                              <input type="radio" name="Q10" value="Q10_N"><label>&nbspNo</label>
+                              <input type="radio" name="Q10" value="No"><label>&nbspNo</label>
                               <br>
                             <br>
 
@@ -462,14 +452,10 @@ body{
                             </div>
                             </div>
 
-
-
-                        
-
                         
                         <div class="row">
                             <div class="col-sm-12 form-group">
-                                <p align="center"><button type="submit" class="button" >Send </button></p>
+                                <p align="center"><button type="submit" class="button">Send </button></p>
                             </div>
                         </div>
                     

@@ -130,17 +130,17 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="spa_dash.html">
+            <a class="nav-link" href="/get_spa">
                <img src="static/images/spa.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">SPA</font>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="users.html">
+            <a class="nav-link" href="/users">
                <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">USERS</font>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href="/dropsession">
                <img src="static/images/logout.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">LOGOUT</font>
             </a>
           </li>
@@ -288,9 +288,9 @@
 
 
 <h3>&nbsp&nbsp&nbspReports</h3>
- <form action="">
-   &nbsp&nbsp&nbspFrom: <input type="date" name="bday"> &nbsp&nbsp&nbsp To: <input type="date" name="bday">
-  &nbsp&nbsp&nbsp<button class="button" type="submit" style="vertical-align:middle"><span>Check </span></button>
+ <form method="post" action="/get_report_{{no}}">
+   &nbsp&nbsp&nbspFrom: <input type="date" name="startdate"> &nbsp&nbsp&nbsp To: <input type="date" name="enddate">
+  &nbsp&nbsp&nbsp<button class="button" type="submit" style="vertical-align:middle"><span>Generate report </span></button>
 </form>
 
 <br><br><br><br><br>

@@ -2,6 +2,7 @@ from flask import Flask, url_for, redirect, render_template, request, abort, ses
 from flask import Flask, render_template, render_template, redirect, url_for, request,g
 from pymongo import MongoClient
 import json
+import datetime
 from flask_pymongo import PyMongo
 from flask import jsonify
 from bson.json_util import dumps
@@ -13,6 +14,7 @@ db = client.TaskDB
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+#first page for feedabck
 @app.route('/')
 def hello_world():
    return render_template("index.html")
@@ -56,6 +58,7 @@ def dropsession():
 	return redirect(url_for('sess'))
 
 
+#Service page to select the services.
 @app.route('/ser_en')
 def services_en():
    return render_template("serviceEN.html")
@@ -65,7 +68,7 @@ def services_ar():
 	   return render_template("serviceAR.html")
 
 
-#Restaurant 1   
+#Restaurant 1 form page-English and arabic
 
 @app.route('/rest1_en')
 def rest1_en():
@@ -84,13 +87,14 @@ def rest1_form_en():
 		#last_name = request.form['lastname']
 		#gender = request.form['gender']
 		#check = request.form['check']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
 		rest = "1"
 		name = request.form['NAME']
 		phone = request.form['PHNO']
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -107,14 +111,14 @@ def rest1_form_en():
 		rating = request.form['RATING']
 		fr = request.form['FR']
 		cm = request.form['CM']
-		print(name)
+		print(dov)
 		db.Task.insert({"rest":rest, "name": name, "phone": phone, "email":email, "dob":dob, 
 			"ad": ad, "dov": dov, "us":us, "p":p, "meal": meal, "q1": q1, "q2":q2, "q3":q3, "q4": q4, "q5":q5, "q6":q6,
 			"q7": q7, "q8":q8, "q9":q9, "q10":q10, "rating":rating,"fr":fr, "cm":cm })
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -134,7 +138,8 @@ def rest1_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -158,10 +163,10 @@ def rest1_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
-#Restaurant 2
+#Restaurant 2 form page-English and arabic
 
 @app.route('/rest2_en')
 def rest2_en():
@@ -186,7 +191,8 @@ def rest2_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -210,7 +216,7 @@ def rest2_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -230,7 +236,8 @@ def rest2_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -254,10 +261,10 @@ def rest2_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
-#Restaurant 3
+#Restaurant 3 form page-English and arabic
 
 @app.route('/rest3_en')
 def rest3_en():
@@ -282,7 +289,8 @@ def rest3_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -306,7 +314,7 @@ def rest3_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -326,7 +334,8 @@ def rest3_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -350,11 +359,11 @@ def rest3_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
-#Restaurant 4
+#Restaurant 4 form page-English and arabic
 
 @app.route('/rest4_en')
 def rest4_en():
@@ -379,7 +388,8 @@ def rest4_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -403,7 +413,7 @@ def rest4_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -423,7 +433,8 @@ def rest4_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -447,11 +458,12 @@ def rest4_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
-#Restaurant 5
+#Restaurant 5 form page-English and arabic
+
 @app.route('/rest5_en')
 def rest5_en():
    return render_template("rest5_form_en.html")
@@ -475,7 +487,8 @@ def rest5_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -499,7 +512,7 @@ def rest5_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -519,7 +532,8 @@ def rest5_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -543,10 +557,11 @@ def rest5_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
-#Restaurant 6
+#Restaurant 6 form page-English and arabic
+
 @app.route('/rest6_en')
 def rest6_en():
    return render_template("rest6_form_en.html")
@@ -570,7 +585,8 @@ def rest6_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -594,7 +610,7 @@ def rest6_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -614,7 +630,8 @@ def rest6_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		meal = request.form['MEAL']
@@ -638,11 +655,12 @@ def rest6_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
-#SPA english
+#SPA english form page-English and arabic
+
 @app.route('/spa_en')
 def spa_en():
    return render_template("spa_form_en.html")
@@ -651,6 +669,7 @@ def spa_en():
 def spa_ar():
    return render_template("spa_form_ar.html")
 
+#list of restaurants
 @app.route('/restaurant')
 def restaurant():
    return render_template("restaurant.html")
@@ -671,7 +690,8 @@ def spa_form_en():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		q1 = request.form['Q1']
@@ -694,7 +714,7 @@ def spa_form_en():
 		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -714,7 +734,8 @@ def spa_form_ar():
 		email = request.form['EMAIL']
 		dob = request.form['DOB']
 		ad = request.form['AD']
-		dov = request.form['DOV']
+		dov = datetime.datetime.now().strftime ("%Y-%m-%d")
+		#dov = request.form['DOV']
 		us = request.form['US']
 		p = request.form['P']
 		q1 = request.form['Q1']
@@ -737,7 +758,7 @@ def spa_form_ar():
 		return render_template("ty_ar.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
 
 
@@ -759,8 +780,9 @@ def get_all():
 		tasks = db.Task.find()
 		#return render_template("users_rest.html", tasks = tasks)
 		return dumps(tasks)
-	except Exception, e:
+	except Exception:
 		return dumps({'error' : str(e)})
+
 
 #get all the users for rest
 @app.route('/get_all_rest', methods = ['GET'])
@@ -776,6 +798,7 @@ def get_all_rest():
 		#return dumps(tasks)
 	return redirect(url_for('sess'))
 
+
 #get all the users for spa
 @app.route('/get_all_spa', methods = ['GET'])
 def get_all_spa():
@@ -784,6 +807,7 @@ def get_all_spa():
 		return render_template("users_spa.html", tasks = tasks)
 		#return dumps(tasks)
 	return redirect(url_for('sess'))
+
 
 #Data of each visitors
 @app.route('/get_all_<name>', methods = ['GET'])
@@ -807,7 +831,7 @@ def get_rest_details(name):
 @app.route('/get_spa_<name>', methods = ['GET'])
 def get_spa_details(name):
 	if 'user' in session:
-		single = db.Task.find({'name':name})
+		single = db.Task.find({'sname':name})
 		return render_template("details_spa.html", single = single)
 		#return render_template("display.html", tasks = tasks)
 	return redirect(url_for('sess'))
@@ -830,6 +854,138 @@ def get_spa_visit():
 		#return render_template("display.html", tasks = tasks)
 	return redirect(url_for('sess'))
 
+#report of visitors per restaurant
+@app.route('/get_report_<no>', methods = ['POST'])
+def get_report(no):
+	if 'user' in session:
+		
+		startdate = request.form['startdate']
+		enddate = request.form['enddate']
+		#single = db.Task.find({'rest':no})
+
+		single = db.Task.find({'rest':no, 'dov': {"$gte": startdate,"$lt":enddate}})
+		total = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate}}).count()
+		q1_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q1':'1'}).count()
+		q1_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q1':'2'}).count()
+		q1_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q1':'3'}).count()
+		q1_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q1':'4'}).count()
+		q1_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q1':'5'}).count()
+		q2_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q2':'1'}).count()
+		q2_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q2':'2'}).count()
+		q2_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q2':'3'}).count()
+		q2_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q2':'4'}).count()
+		q2_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q2':'5'}).count()
+		q3_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q3':'1'}).count()
+		q3_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q3':'2'}).count()
+		q3_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q3':'3'}).count()
+		q3_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q3':'4'}).count()
+		q3_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q3':'5'}).count()
+		q4_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q4':'1'}).count()
+		q4_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q4':'2'}).count()
+		q4_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q4':'3'}).count()
+		q4_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q4':'4'}).count()
+		q4_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q4':'5'}).count()
+		q5_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q5':'1'}).count()
+		q5_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q5':'2'}).count()
+		q5_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q5':'3'}).count()
+		q5_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q5':'4'}).count()
+		q5_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q5':'5'}).count()
+		q6_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q6':'1'}).count()
+		q6_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q6':'2'}).count()
+		q6_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q6':'3'}).count()
+		q6_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q6':'4'}).count()
+		q6_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q6':'5'}).count()
+		q7_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q7':'1'}).count()
+		q7_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q7':'2'}).count()
+		q7_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q7':'3'}).count()
+		q7_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q7':'4'}).count()
+		q7_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q7':'5'}).count()
+		q8_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q8':'1'}).count()
+		q8_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q8':'2'}).count()
+		q8_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q8':'3'}).count()
+		q8_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q8':'4'}).count()
+		q8_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q8':'5'}).count()
+		q9_1 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q9':'1'}).count()
+		q9_2 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q9':'2'}).count()
+		q9_3 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q9':'3'}).count()
+		q9_4 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q9':'4'}).count()
+		q9_5 = db.Task.find({'rest':no,'dov': {"$gte": startdate,"$lt":enddate},'q9':'5'}).count()
+		
+		print (startdate)
+		#return dumps(single)
+		return render_template("report_rest.html",no = no , total = total, single = single, q1_1=q1_1, q1_2=q1_2, q1_3=q1_3,q1_4=q1_4,q1_5=q1_5,q2_1=q2_1, q2_2=q2_2, q2_3=q2_3,q2_4=q2_4,q2_5=q2_5,
+		q3_1=q3_1, q3_2=q3_2, q3_3=q3_3,q3_4=q3_4,q3_5=q3_5,q4_1=q4_1, q4_2=q4_2, q4_3=q4_3,q4_4=q4_4,q4_5=q4_5,q5_1=q5_1, q5_2=q5_2, q5_3=q5_3,q5_4=q5_4,q5_5=q5_5,
+		q6_1=q6_1, q6_2=q6_2, q6_3=q6_3,q6_4=q6_4,q6_5=q6_5,q7_1=q7_1, q7_2=q7_2, q7_3=q7_3,q7_4=q7_4,q7_5=q7_5,q8_1=q8_1, q8_2=q8_2, q8_3=q8_3,q8_4=q8_4,q8_5=q8_5,
+		q9_1=q9_1, q9_2=q9_2, q9_3=q9_3,q9_4=q9_4,q9_5=q9_5, startdate = startdate, enddate=enddate)
+		#return render_template("display.html", tasks = tasks)
+	return redirect(url_for('sess'))
+
+
+#report of visitors per spa
+@app.route('/get_report_spa', methods = ['POST'])
+def get_report_spa():
+	if 'user' in session:
+		
+		startdate = request.form['startdate']
+		enddate = request.form['enddate']
+		#single = db.Task.find({'rest':no})
+
+		#single = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate}})
+		single = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate}}).count()
+		sq1_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq1':'1'}).count()
+		sq1_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq1':'2'}).count()
+		sq1_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq1':'3'}).count()
+		sq1_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq1':'4'}).count()
+		sq1_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq1':'5'}).count()
+		sq2_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq2':'1'}).count()
+		sq2_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq2':'2'}).count()
+		sq2_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq2':'3'}).count()
+		sq2_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq2':'4'}).count()
+		sq2_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq2':'5'}).count()
+		sq3_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq3':'1'}).count()
+		sq3_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq3':'2'}).count()
+		sq3_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq3':'3'}).count()
+		sq3_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq3':'4'}).count()
+		sq3_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq3':'5'}).count()
+		sq4_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq4':'1'}).count()
+		sq4_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq4':'2'}).count()
+		sq4_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq4':'3'}).count()
+		sq4_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq4':'4'}).count()
+		sq4_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq4':'5'}).count()
+		sq5_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq5':'1'}).count()
+		sq5_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq5':'2'}).count()
+		sq5_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq5':'3'}).count()
+		sq5_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq5':'4'}).count()
+		sq5_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq5':'5'}).count()
+		sq6_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq6':'1'}).count()
+		sq6_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq6':'2'}).count()
+		sq6_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq6':'3'}).count()
+		sq6_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq6':'4'}).count()
+		sq6_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq6':'5'}).count()
+		sq7_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq7':'1'}).count()
+		sq7_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq7':'2'}).count()
+		sq7_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq7':'3'}).count()
+		sq7_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq7':'4'}).count()
+		sq7_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq7':'5'}).count()
+		sq8_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq8':'1'}).count()
+		sq8_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq8':'2'}).count()
+		sq8_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq8':'3'}).count()
+		sq8_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq8':'4'}).count()
+		sq8_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq8':'5'}).count()
+		sq9_1 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq9':'1'}).count()
+		sq9_2 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq9':'2'}).count()
+		sq9_3 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq9':'3'}).count()
+		sq9_4 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq9':'4'}).count()
+		sq9_5 = db.Task.find({'spa':'spa','dov': {"$gte": startdate,"$lt":enddate},'sq9':'5'}).count()
+		
+		return render_template("report_spa.html",single = single, sq1_1=sq1_1, sq1_2=sq1_2, sq1_3=sq1_3,sq1_4=sq1_4,sq1_5=sq1_5,sq2_1=sq2_1, sq2_2=sq2_2, sq2_3=sq2_3,sq2_4=sq2_4,sq2_5=sq2_5,
+		sq3_1=sq3_1, sq3_2=sq3_2, sq3_3=sq3_3,sq3_4=sq3_4,sq3_5=sq3_5,sq4_1=sq4_1, sq4_2=sq4_2, sq4_3=sq4_3,sq4_4=sq4_4,sq4_5=sq4_5,sq5_1=sq5_1, sq5_2=sq5_2, sq5_3=sq5_3,sq5_4=sq5_4,sq5_5=sq5_5,
+		sq6_1=sq6_1, sq6_2=sq6_2, sq6_3=sq6_3,sq6_4=sq6_4,sq6_5=sq6_5,sq7_1=sq7_1, sq7_2=sq7_2, sq7_3=sq7_3,sq7_4=sq7_4,sq7_5=sq7_5,sq8_1=sq8_1, sq8_2=sq8_2, sq8_3=sq8_3,sq8_4=sq8_4,sq8_5=sq8_5,
+		sq9_1=sq9_1, sq9_2=sq9_2, sq9_3=sq9_3,sq9_4=sq9_4,sq9_5=sq9_5,startdate = startdate, enddate=enddate)
+		print (startdate)
+		#return dumps(single)
+
+	return redirect(url_for('sess'))
 
 #Data of each rating by each visitor per restaurant
 @app.route('/get_rating_<rest>', methods = ['GET'])
@@ -895,51 +1051,51 @@ def get_rest_rating(rest):
 def get_spa_rating(spa):
 	if 'user' in session:
 		single = db.Task.find({'spa':spa}).count()
-		sq1_1 = db.Task.find({'spa':spa,'q1':'1'}).count()
-		sq1_2 = db.Task.find({'spa':spa,'q1':'2'}).count()
-		sq1_3 = db.Task.find({'spa':spa,'q1':'3'}).count()
-		sq1_4 = db.Task.find({'spa':spa,'q1':'4'}).count()
-		sq1_5 = db.Task.find({'spa':spa,'q1':'5'}).count()
-		sq2_1 = db.Task.find({'spa':spa,'q2':'1'}).count()
-		sq2_2 = db.Task.find({'spa':spa,'q2':'2'}).count()
-		sq2_3 = db.Task.find({'spa':spa,'q2':'3'}).count()
-		sq2_4 = db.Task.find({'spa':spa,'q2':'4'}).count()
-		sq2_5 = db.Task.find({'spa':spa,'q2':'5'}).count()
-		sq3_1 = db.Task.find({'spa':spa,'q3':'1'}).count()
-		sq3_2 = db.Task.find({'spa':spa,'q3':'2'}).count()
-		sq3_3 = db.Task.find({'spa':spa,'q3':'3'}).count()
-		sq3_4 = db.Task.find({'spa':spa,'q3':'4'}).count()
-		sq3_5 = db.Task.find({'spa':spa,'q3':'5'}).count()
-		sq4_1 = db.Task.find({'spa':spa,'q4':'1'}).count()
-		sq4_2 = db.Task.find({'spa':spa,'q4':'2'}).count()
-		sq4_3 = db.Task.find({'spa':spa,'q4':'3'}).count()
-		sq4_4 = db.Task.find({'spa':spa,'q4':'4'}).count()
-		sq4_5 = db.Task.find({'spa':spa,'q4':'5'}).count()
-		sq5_1 = db.Task.find({'spa':spa,'q5':'1'}).count()
-		sq5_2 = db.Task.find({'spa':spa,'q5':'2'}).count()
-		sq5_3 = db.Task.find({'spa':spa,'q5':'3'}).count()
-		sq5_4 = db.Task.find({'spa':spa,'q5':'4'}).count()
-		sq5_5 = db.Task.find({'spa':spa,'q5':'5'}).count()
-		sq6_1 = db.Task.find({'spa':spa,'q6':'1'}).count()
-		sq6_2 = db.Task.find({'spa':spa,'q6':'2'}).count()
-		sq6_3 = db.Task.find({'spa':spa,'q6':'3'}).count()
-		sq6_4 = db.Task.find({'spa':spa,'q6':'4'}).count()
-		sq6_5 = db.Task.find({'spa':spa,'q6':'5'}).count()
-		sq7_1 = db.Task.find({'spa':spa,'q7':'1'}).count()
-		sq7_2 = db.Task.find({'spa':spa,'q7':'2'}).count()
-		sq7_3 = db.Task.find({'spa':spa,'q7':'3'}).count()
-		sq7_4 = db.Task.find({'spa':spa,'q7':'4'}).count()
-		sq7_5 = db.Task.find({'spa':spa,'q7':'5'}).count()
-		sq8_1 = db.Task.find({'spa':spa,'q8':'1'}).count()
-		sq8_2 = db.Task.find({'spa':spa,'q8':'2'}).count()
-		sq8_3 = db.Task.find({'spa':spa,'q8':'3'}).count()
-		sq8_4 = db.Task.find({'spa':spa,'q8':'4'}).count()
-		sq8_5 = db.Task.find({'spa':spa,'q8':'5'}).count()
-		sq9_1 = db.Task.find({'spa':spa,'q9':'1'}).count()
-		sq9_2 = db.Task.find({'spa':spa,'q9':'2'}).count()
-		sq9_3 = db.Task.find({'spa':spa,'q9':'3'}).count()
-		sq9_4 = db.Task.find({'spa':spa,'q9':'4'}).count()
-		sq9_5 = db.Task.find({'spa':spa,'q9':'5'}).count()
+		sq1_1 = db.Task.find({'spa':spa,'sq1':'1'}).count()
+		sq1_2 = db.Task.find({'spa':spa,'sq1':'2'}).count()
+		sq1_3 = db.Task.find({'spa':spa,'sq1':'3'}).count()
+		sq1_4 = db.Task.find({'spa':spa,'sq1':'4'}).count()
+		sq1_5 = db.Task.find({'spa':spa,'sq1':'5'}).count()
+		sq2_1 = db.Task.find({'spa':spa,'sq2':'1'}).count()
+		sq2_2 = db.Task.find({'spa':spa,'sq2':'2'}).count()
+		sq2_3 = db.Task.find({'spa':spa,'sq2':'3'}).count()
+		sq2_4 = db.Task.find({'spa':spa,'sq2':'4'}).count()
+		sq2_5 = db.Task.find({'spa':spa,'sq2':'5'}).count()
+		sq3_1 = db.Task.find({'spa':spa,'sq3':'1'}).count()
+		sq3_2 = db.Task.find({'spa':spa,'sq3':'2'}).count()
+		sq3_3 = db.Task.find({'spa':spa,'sq3':'3'}).count()
+		sq3_4 = db.Task.find({'spa':spa,'sq3':'4'}).count()
+		sq3_5 = db.Task.find({'spa':spa,'sq3':'5'}).count()
+		sq4_1 = db.Task.find({'spa':spa,'sq4':'1'}).count()
+		sq4_2 = db.Task.find({'spa':spa,'sq4':'2'}).count()
+		sq4_3 = db.Task.find({'spa':spa,'sq4':'3'}).count()
+		sq4_4 = db.Task.find({'spa':spa,'sq4':'4'}).count()
+		sq4_5 = db.Task.find({'spa':spa,'sq4':'5'}).count()
+		sq5_1 = db.Task.find({'spa':spa,'sq5':'1'}).count()
+		sq5_2 = db.Task.find({'spa':spa,'sq5':'2'}).count()
+		sq5_3 = db.Task.find({'spa':spa,'sq5':'3'}).count()
+		sq5_4 = db.Task.find({'spa':spa,'sq5':'4'}).count()
+		sq5_5 = db.Task.find({'spa':spa,'sq5':'5'}).count()
+		sq6_1 = db.Task.find({'spa':spa,'sq6':'1'}).count()
+		sq6_2 = db.Task.find({'spa':spa,'sq6':'2'}).count()
+		sq6_3 = db.Task.find({'spa':spa,'sq6':'3'}).count()
+		sq6_4 = db.Task.find({'spa':spa,'sq6':'4'}).count()
+		sq6_5 = db.Task.find({'spa':spa,'sq6':'5'}).count()
+		sq7_1 = db.Task.find({'spa':spa,'sq7':'1'}).count()
+		sq7_2 = db.Task.find({'spa':spa,'sq7':'2'}).count()
+		sq7_3 = db.Task.find({'spa':spa,'sq7':'3'}).count()
+		sq7_4 = db.Task.find({'spa':spa,'sq7':'4'}).count()
+		sq7_5 = db.Task.find({'spa':spa,'sq7':'5'}).count()
+		sq8_1 = db.Task.find({'spa':spa,'sq8':'1'}).count()
+		sq8_2 = db.Task.find({'spa':spa,'sq8':'2'}).count()
+		sq8_3 = db.Task.find({'spa':spa,'sq8':'3'}).count()
+		sq8_4 = db.Task.find({'spa':spa,'sq8':'4'}).count()
+		sq8_5 = db.Task.find({'spa':spa,'sq8':'5'}).count()
+		sq9_1 = db.Task.find({'spa':spa,'sq9':'1'}).count()
+		sq9_2 = db.Task.find({'spa':spa,'sq9':'2'}).count()
+		sq9_3 = db.Task.find({'spa':spa,'sq9':'3'}).count()
+		sq9_4 = db.Task.find({'spa':spa,'sq9':'4'}).count()
+		sq9_5 = db.Task.find({'spa':spa,'sq9':'5'}).count()
 		
 		return render_template("spa_dash.html",single = single, sq1_1=sq1_1, sq1_2=sq1_2, sq1_3=sq1_3,sq1_4=sq1_4,sq1_5=sq1_5,sq2_1=sq2_1, sq2_2=sq2_2, sq2_3=sq2_3,sq2_4=sq2_4,sq2_5=sq2_5,
 		sq3_1=sq3_1, sq3_2=sq3_2, sq3_3=sq3_3,sq3_4=sq3_4,sq3_5=sq3_5,sq4_1=sq4_1, sq4_2=sq4_2, sq4_3=sq4_3,sq4_4=sq4_4,sq4_5=sq4_5,sq5_1=sq5_1, sq5_2=sq5_2, sq5_3=sq5_3,sq5_4=sq5_4,sq5_5=sq5_5,
