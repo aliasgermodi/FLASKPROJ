@@ -755,7 +755,7 @@ def spa_form_ar():
 		db.Task.insert({"spa":spa, "sname": name, "sphone": phone, "email":email, "dob":dob, 
 			"ad": ad, "dov": dov, "us":us, "sp":p, "sq1": q1, "sq2":q2, "sq3":q3, "sq4": q4, "sq5":q5, "sq6":q6,
 			"sq7": q7, "sq8":q8, "sq9":q9, "sq10":q10, "sq11":q11, "name_spa":name_spa, "scm":cm })
-		return render_template("ty_ar.html")
+		return render_template("ty_en.html")
 		#return render_template("service.html", fn = first_name, ln = last_name, gender = gender)
 
 	except Exception:
@@ -858,6 +858,14 @@ def get_spa_visit():
 @app.route('/get_report_<no>', methods = ['POST'])
 def get_report(no):
 	if 'user' in session:
+		if no == "1":
+			logo = "les.png"
+		elif no == "2":
+			logo = "cucina.png"
+		elif no == "3":
+			logo = "chococafe.png"
+		elif no == "4":
+			logo = "luna.png"
 		
 		startdate = request.form['startdate']
 		enddate = request.form['enddate']
@@ -913,7 +921,7 @@ def get_report(no):
 		
 		print (startdate)
 		#return dumps(single)
-		return render_template("report_rest.html",no = no , total = total, single = single, q1_1=q1_1, q1_2=q1_2, q1_3=q1_3,q1_4=q1_4,q1_5=q1_5,q2_1=q2_1, q2_2=q2_2, q2_3=q2_3,q2_4=q2_4,q2_5=q2_5,
+		return render_template("report_rest.html",logo = logo,no = no , total = total, single = single, q1_1=q1_1, q1_2=q1_2, q1_3=q1_3,q1_4=q1_4,q1_5=q1_5,q2_1=q2_1, q2_2=q2_2, q2_3=q2_3,q2_4=q2_4,q2_5=q2_5,
 		q3_1=q3_1, q3_2=q3_2, q3_3=q3_3,q3_4=q3_4,q3_5=q3_5,q4_1=q4_1, q4_2=q4_2, q4_3=q4_3,q4_4=q4_4,q4_5=q4_5,q5_1=q5_1, q5_2=q5_2, q5_3=q5_3,q5_4=q5_4,q5_5=q5_5,
 		q6_1=q6_1, q6_2=q6_2, q6_3=q6_3,q6_4=q6_4,q6_5=q6_5,q7_1=q7_1, q7_2=q7_2, q7_3=q7_3,q7_4=q7_4,q7_5=q7_5,q8_1=q8_1, q8_2=q8_2, q8_3=q8_3,q8_4=q8_4,q8_5=q8_5,
 		q9_1=q9_1, q9_2=q9_2, q9_3=q9_3,q9_4=q9_4,q9_5=q9_5, startdate = startdate, enddate=enddate)
@@ -991,6 +999,16 @@ def get_report_spa():
 @app.route('/get_rating_<rest>', methods = ['GET'])
 def get_rest_rating(rest):
 	if 'user' in session:
+
+		if rest == "1":
+			logo = "les.png"
+		elif rest == "2":
+			logo = "cucina.png"
+		elif rest == "3":
+			logo = "chococafe.png"
+		elif rest == "4":
+			logo = "luna.png"
+
 		#rest = "1"
 		single = db.Task.find({'rest':rest}).count()
 		q1_1 = db.Task.find({'rest':rest,'q1':'1'}).count()
@@ -1039,7 +1057,7 @@ def get_rest_rating(rest):
 		q9_4 = db.Task.find({'rest':rest,'q9':'4'}).count()
 		q9_5 = db.Task.find({'rest':rest,'q9':'5'}).count()
 		
-		return render_template("rest_dash.html",no = rest , single = single, q1_1=q1_1, q1_2=q1_2, q1_3=q1_3,q1_4=q1_4,q1_5=q1_5,q2_1=q2_1, q2_2=q2_2, q2_3=q2_3,q2_4=q2_4,q2_5=q2_5,
+		return render_template("rest_dash.html",logo = logo, no = rest , single = single, q1_1=q1_1, q1_2=q1_2, q1_3=q1_3,q1_4=q1_4,q1_5=q1_5,q2_1=q2_1, q2_2=q2_2, q2_3=q2_3,q2_4=q2_4,q2_5=q2_5,
 		q3_1=q3_1, q3_2=q3_2, q3_3=q3_3,q3_4=q3_4,q3_5=q3_5,q4_1=q4_1, q4_2=q4_2, q4_3=q4_3,q4_4=q4_4,q4_5=q4_5,q5_1=q5_1, q5_2=q5_2, q5_3=q5_3,q5_4=q5_4,q5_5=q5_5,
 		q6_1=q6_1, q6_2=q6_2, q6_3=q6_3,q6_4=q6_4,q6_5=q6_5,q7_1=q7_1, q7_2=q7_2, q7_3=q7_3,q7_4=q7_4,q7_5=q7_5,q8_1=q8_1, q8_2=q8_2, q8_3=q8_3,q8_4=q8_4,q8_5=q8_5,
 		q9_1=q9_1, q9_2=q9_2, q9_3=q9_3,q9_4=q9_4,q9_5=q9_5,)

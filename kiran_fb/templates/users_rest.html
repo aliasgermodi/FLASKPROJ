@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Symphony Dashboard</title>
+  <!-- Favicon -->
+  <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="./assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="./assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/argon.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+  <style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+#chartdiv1 {
+  width: 100%;
+  height: 350px;
+}
+
+#chartdiv2 {
+  width: 100%;
+  height: 350px;
+}
+
+
+.nav-link{
+    font-weight: bold;
+  }
+
+ .nav-link:hover, .w3-bar-item.active a{
+    background-color: rgba(103, 183, 220,0.9) !important;
+  }
+
+
+</style>
+</head>
+
+<body>
+  <!-- Sidenav -->
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidenav-main" style="background-color:white;">
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+ 
+        <img src="static/static/images/kiran.png"  style="width: 180px;">
+
+     
+
+
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            
+                <img src="static/images/kiran.png" style="width: 180px;" >
+            
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Form -->
+
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/get_total">
+              <img src="static/images/home.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;"> HOME</font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/restaurant">
+               <img src="static/images/restaurant.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">RESTAURANTS </font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/get_spa">
+               <img src="static/images/spa.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">SPA</font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users"  style="background-color: rgba(103, 183, 220,0.9);">
+               <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">USERS</font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dropsession">
+               <img src="static/images/logout.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">LOGOUT</font>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" style="padding: 50px;">
+
+    
+
+                <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Restaurant</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone No.</th>
+                    <th scope="col">PE</th>
+                    <th scope="col"></th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                  {% for data in rest1 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+                <tbody>
+                  {% for data in rest2 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+                <tbody>
+                  {% for data in rest3 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+                <tbody>
+                  {% for data in rest4 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+                <tbody>
+                  {% for data in rest5 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+                <tbody>
+                  {% for data in rest6 %}
+                  <tr>
+                   <th scope="row">
+                       <span class="mb-0 text-sm">{{ data['name'] }}</span>
+                   </th>
+                   <td>
+                        {{ data['email'] }}
+                   </td>
+                   <td>
+                         {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['p'] }}
+                   </td>
+                   <td>
+                         <a href="/get_rest_{{data['name']}}">View Details</a>
+                   </td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </div>
+      </div> 
+        <br><br>
+<br>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JS -->
+  <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+    <h2>Contacts</h2>
+       <table role="grid">
+        {% for data in single %}
+            <tr>
+            <td>{{ data['name'] }}</td>
+            <td>{{ data['email'] }}</td>
+            <td>{{ data['phone'] }}</td>
+            <td><a href="#child4">My clickable text</a></td>
+          </tr>
+        {% endfor %}
+       </table>       
+{% endblock %}
