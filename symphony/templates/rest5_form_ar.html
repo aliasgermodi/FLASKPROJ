@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="ar">
+<html dir="rtl" lang="ar">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,36 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="form.js"></script>
 
+
+
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 <style>
+
+
+	 .carousel-indicators li {
+    position: relative;
+       display: inline-block;
+       width: 30px;
+       height: 4px;
+       margin: 2px;
+       text-indent: 0;
+       cursor: pointer;
+       border: none;
+       border-radius: 10%;
+       background-color: rgba(255, 255, 255, 0.2);
+  }
+  .carousel-indicators li.active {
+    width: 30px;
+       height: 4px;
+       margin: 2px;
+       background-color: rgba(255, 255, 255, 0.9);
+  }
+
+
 .fbRating {
   display: flex;
   background-color: transparent;
@@ -102,7 +131,7 @@ https://proximomarketing.com/wp-content/uploads/2017/05/reactions-reactions.png
 }
 #full-stars-example-two .rating__input {
   position: absolute !important;
-  left: -9999px !important;
+  right: -9999px !important;
 }
 #full-stars-example-two .rating__input--none {
   display: none;
@@ -171,15 +200,37 @@ body{
 
     </head>
     <body >
-      <p align="center"><img src="static/images/symphony.png" style="width: 180px;"></p>
+      <p align="center"><img src="static/images/symphony.png" style="width: 170px;"></p>
 
-   <hr color="#C0C0C0" size="1" width="90%">
+   <hr color="#C0C0C0" size="0.5" width="90%">
+
+
+<div class="container" style="margin-top: -75px;">
+  <h2>Carousel Example</h2>  
+  <div id="myCarousel" class="carousel slide" data-interval="false">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+      <li data-target="#myCarousel" data-slide-to="6"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" style="background-image: linear-gradient(to bottom right, #d3bc92 0%, #bc9a5c 100%);">
+      <div class="item active">
+
+
+
         <div class="container" >
-            <div class="row " style="margin-top: 50px">
-                <div class="col-md-6 col-md-offset-3 form-container" style="background-image: linear-gradient(to bottom right, #d3bc92 0%, #bc9a5c 100%); ">
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
                     <h2>نحن نقدر ملاحظاتك   </h2>  
-                    <br>
-                    <form role="form" method="post" id="reused_form" onSubmit="alert('Thank you for your feedback.')";>
+                    <br><br>
+                    <form role="form" method="post" id="reused_form">
 
                         <div class="row">
 
@@ -217,12 +268,27 @@ body{
                             </div>
                         </div>
 
+
+
+              </div>
+           </div>
+         </div>
+       </div>
+
+
+        <div class="item">
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                   <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br><br>
+
                            <label> كيف عرفت عنا؟</label><br>
                              <div class="row">
                               
                               <div class="col-sm-7 form-group">
                                 <label class="checkbox-inline check1" style="font-weight: bold;">
-                                <input type="checkbox" name="US" value="Resort/Hotel"> &nbsp&nbsp&nbsp&nbsp   حجز المنتجع / الفندق       </label>
+                                <input type="checkbox" name="US" value="Resort/Hotel reservation"> &nbsp&nbsp&nbsp&nbsp   حجز المنتجع / الفندق       </label>
                               </div>
 
                               <div class="col-sm-5 form-group">
@@ -258,19 +324,46 @@ body{
 
                              </div>
                              <div class="row">
+                              <div class="col-sm-5 form-group"></div>
                               <div class="col-sm-7 form-group">
                                 <label class="checkbox-inline check1" style="font-weight: bold;">
                                 <input type="checkbox" name="US" value="Others"> &nbsp&nbsp&nbsp&nbsp   آخرون   </label>
                               </div>
                               <div class="col-sm-5 form-group"></div>
                              </div>
-                                <br>
+                               
+
+
+
+               </div>
+           </div>
+         </div>
+      </div>
+    
+      <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                    <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br><br>
                         
                          <label style="text-align: justify;">نعم ، أوافق على تلقي الرسائل التجارية والبريد الإلكتروني من فندق سيمفوني ستايل الكويت المتعلقة بالمنتجات والخدمات الفندقية بما في ذلك العروض الخاصة والعروض الترويجية ، وأنا أفهم أنه حتى لو لم أقوم بتحديد هذا المربع ، فقد أتلقى رسائل معاملات. يجوز لي إلغاء  يجوز لي إلغاء الاشتراك في الاتصالات التسويقية في أي وقت وسيتم إعطائي خيار القيام بذلك في كل اتصال.  </label><br>     
                               
                               <input type="radio" name="P" value="Yes" required><label>&nbsp&nbspنعم فعلا    &nbsp&nbsp</label>                              
                               <input type="radio" name="P" value="No"><label>&nbsp&nbspلا</label>
-                            <br><br>
+                       
+
+               </div>
+           </div>
+         </div>
+      </div>
+    
+      <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                    <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br>
 
                         <label>ماذا أتيت هنا؟</label><br>
                            <input type="radio" name="MEAL" value="Meal" required> <label>&nbsp وجبة   &nbsp&nbsp&nbsp</label>
@@ -327,7 +420,20 @@ body{
                                <input type="radio" name="Q3" id="angry2" value="5">
                                <label for="angry2"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
                              </div>
-                             <br>
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+       
+           <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                    <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br>
+
 
                           <label>كيف تقيم معرفة العامل لقائمة الطعام والشراب؟</label>     
 
@@ -391,7 +497,18 @@ body{
                                <input type="radio" name="Q7" id="angry6" value="5">
                                <label for="angry6"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
                              </div>
-                             <br>
+              </div>
+           </div>
+         </div>
+      </div>
+
+
+        <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                    <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br>
                             
                             <label>كيف تقيم كيفية تقديم الفاتورة؟</label>     
 
@@ -427,14 +544,14 @@ body{
 
                              <label>هل قام مدير المطعم بزيارة طاولتك؟</label><br>     
                               
-                              <input type="radio" name="P" value="Yes" required><label>&nbsp&nbspنعم فعلا    &nbsp&nbsp</label>                              
-                              <input type="radio" name="P" value="No"><label>&nbsp&nbspلا</label>
+                              <input type="radio" name="Q10" value="Yes" required><label>&nbsp&nbspنعم فعلا    &nbsp&nbsp</label>                              
+                              <input type="radio" name="Q10" value="No"><label>&nbsp&nbspلا</label>
                             <br><br>
                            
 
 
 
-                            <label>كيف تقيم سرعة الاستجابة لطلبك؟</label>     
+                            <label>كيف تقيم سرعة الاستجابة لطلبك؟ </label>     
 
         <div id="full-stars-example-two">
           <div class="rating-group">
@@ -451,7 +568,24 @@ body{
         <input class="rating__input" name="RATING" id="rating-5" value="5" type="radio">
           </div>
         </div>
-                             <br>
+
+
+
+        </div>
+           </div>
+         </div>
+      </div>
+
+
+
+
+       <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 520px;">
+                    <h2>نحن نقدر ملاحظاتك   </h2>  
+                    <br>
+                    
 
                             <div class="row">
                             <div class="col-sm-12 form-group">
@@ -478,7 +612,42 @@ body{
                             </div>
                         </div>
                     
-                    </form>
+                     </form>
+                    
+             
+   
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+
+
+
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="right carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+      
+    </a>
+    <a class="left carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+       
                     
                     <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
                     <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>

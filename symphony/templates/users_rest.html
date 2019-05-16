@@ -45,6 +45,97 @@
 
 
 </style>
+
+
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+</style>
+
+<style>
+.buttons {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #67b7dc;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 10px;
+  font-weight:bold;
+  padding: 0px;
+  width: 90px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 12px;
+  margin-left: 0px;
+  height: 30px;
+}
+
+.buttons span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttons span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttons:hover span {
+  padding-right: 25px;
+}
+
+.buttons:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+
+<style> 
+input[type=text] {
+  width: 160px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: white;
+  padding: 12px 20px 12px 12px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 25%;
+}
+</style>
+
+
+
 </head>
 
 <body>
@@ -99,7 +190,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users"  style="background-color: rgba(103, 183, 220,0.9);">
-               <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">USERS</font>
+               <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">GUESTS</font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reports">
+               <img src="static/images/reports.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">REPORTS</font>
             </a>
           </li>
           <li class="nav-item">
@@ -112,7 +208,102 @@
     </div>
   </nav>
   <!-- Main content -->
-  <div class="main-content" style="padding: 50px;">
+  <div class="main-content" style="padding: 20px;">
+
+
+
+
+     <!-- Header -->
+    <div class="header pb-4 pt-5 pt-md-6" style="background-color: rgba(103, 183, 220,0.1)">
+      <div class="container-fluid">
+       
+
+
+           <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-4 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" >
+                  <div class="row" >
+                    <div class="col-md-9" >
+                      <h5 class="card-title text-uppercase text-muted mb-0">Data on</h5>
+                      <br>
+                       <form method="post" action="/get_all_dateon">
+                         <input type="date" name="startdate" style="font-size: 11px;">
+                         <button class="button button2" type="submit">GO</button>
+                     </form>
+                    </div>
+                    <div class="col-md-1">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6771dc">
+                        <i class="fa fa-search w3-xxxlarge"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-9" >
+                      <h5 class="card-title text-uppercase text-muted mb-0">Data from</h5>
+              
+                       <form method="post"  action="/get_all_fromto">
+                         <input type="date" name="startdate" style="font-size: 11px;">&nbsp<input type="date" name="enddate" style="font-size: 11px;">
+                         <button class="button button2" type="submit">GO</button>
+                     </form>
+                    </div>
+                    <div class="col-md-1">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6DBBC9">
+                        <i class="fa fa-search w3-xxxlarge"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+             <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <h5 class="card-title text-uppercase text-muted mb-0">All Data</h5>
+                      <a href="/get_all_rest"><button class="buttons" style="vertical-align:middle"><span>CLICK HERE </span></button></a>
+                    </div>
+                    <div class="col-md-1">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#b785e0">
+                        <i class="fas fa-file"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <br>  
+
+
+                <form>
+                    <input type="text" name="search" placeholder="Search">
+                </form>
+                <br>
+
 
     
 
@@ -130,6 +321,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone No.</th>
+                    <th scope="col">Restaurant</th>
                     <th scope="col">PE</th>
                     <th scope="col"></th>
                   </tr>
@@ -146,6 +338,9 @@
                    </td>
                    <td>
                          {{ data['phone'] }}
+                   </td>
+                   <td>
+                         Les Delicates
                    </td>
                    <td>
                          {{ data['p'] }}
@@ -170,6 +365,9 @@
                          {{ data['phone'] }}
                    </td>
                    <td>
+                         Cucina
+                   </td>
+                   <td>
                          {{ data['p'] }}
                    </td>
                    <td>
@@ -190,6 +388,9 @@
                    </td>
                    <td>
                          {{ data['phone'] }}
+                   </td>
+                   <td>
+                         Choco Cafe
                    </td>
                    <td>
                          {{ data['p'] }}
@@ -214,6 +415,9 @@
                          {{ data['phone'] }}
                    </td>
                    <td>
+                         {{ data['rest'] }}
+                   </td>
+                   <td>
                          {{ data['p'] }}
                    </td>
                    <td>
@@ -236,6 +440,9 @@
                          {{ data['phone'] }}
                    </td>
                    <td>
+                         LUNA
+                   </td>
+                   <td>
                          {{ data['p'] }}
                    </td>
                    <td>
@@ -256,6 +463,9 @@
                    </td>
                    <td>
                          {{ data['phone'] }}
+                   </td>
+                   <td>
+                         {{ data['rest'] }}
                    </td>
                    <td>
                          {{ data['p'] }}
