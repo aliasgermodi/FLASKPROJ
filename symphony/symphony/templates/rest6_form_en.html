@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Restaurant 6 (English)</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="form.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="form.js"></script>
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+<style>
+
+
+
+  .carousel-indicators li {
+    position: relative;
+       display: inline-block;
+       width: 30px;
+       height: 4px;
+       margin: 2px;
+       text-indent: 0;
+       cursor: pointer;
+       border: none;
+       border-radius: 10%;
+       background-color: rgba(255, 255, 255, 0.2);
+  }
+  .carousel-indicators li.active {
+    width: 30px;
+       height: 4px;
+       margin: 2px;
+       background-color: rgba(255, 255, 255, 0.9);
+  }
+
+
+.fbRating {
+  display: flex;
+  background-color: transparent;
+}
+.fbRating input[type="radio"] {
+  display: none;
+}
+.fbRating input[type="radio"] + label {
+  display: inline-flex;
+  height: 3.125rem;
+  width: 3.125rem;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 23.125rem;
+  border-radius: 31.25rem;
+  margin: 0.625rem 1.25rem;
+  transition: all ease 0.25s;
+
+}
+.fbRating input[type="radio"] + label:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.fbRating input:nth-of-type(1) + label {
+  background-position: 0rem 0;
+}
+.fbRating input:nth-of-type(1):checked + label {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.fbRating input:nth-of-type(2) + label {
+  background-position: -4rem 0;
+}
+.fbRating input:nth-of-type(2):checked + label {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.fbRating input:nth-of-type(3) + label {
+  background-position: -8rem 0;
+}
+.fbRating input:nth-of-type(3):checked + label {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.fbRating input:nth-of-type(4) + label {
+  background-position: -12rem 0;
+}
+.fbRating input:nth-of-type(4):checked + label {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.fbRating input:nth-of-type(5) + label {
+  background-position: -16rem 0;
+}
+.fbRating input:nth-of-type(5):checked + label {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+/*
+
+https://proximomarketing.com/wp-content/uploads/2017/05/reactions-reactions.png
+*/
+</style>
+
+<style>
+
+
+#full-stars-example-two {
+  /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+  /* make hover effect work properly in IE */
+  /* hide radio inputs */
+  /* hide 'none' input from screenreaders */
+  /* set icon padding and size */
+  /* set default star color */
+  /* if any input is checked, make its following siblings grey */
+  /* make all stars orange on rating group hover */
+  /* make hovered input's following siblings grey on hover */
+}
+#full-stars-example-two .rating-group {
+  display: inline-flex;
+}
+#full-stars-example-two .rating__icon {
+  pointer-events: none;
+}
+#full-stars-example-two .rating__input {
+  position: absolute !important;
+  left: -9999px !important;
+}
+#full-stars-example-two .rating__input--none {
+  display: none;
+}
+#full-stars-example-two .rating__label {
+  cursor: pointer;
+  padding: 0 0.1em;
+  font-size: 2rem;
+}
+#full-stars-example-two .rating__icon--star {
+  color: orange;
+}
+#full-stars-example-two .rating__input:checked ~ .rating__label .rating__icon--star {
+  color: #ddd;
+}
+#full-stars-example-two .rating-group:hover .rating__label .rating__icon--star {
+  color: orange;
+}
+#full-stars-example-two .rating__input:hover ~ .rating__label .rating__icon--star {
+  color: #ddd;
+}
+
+
+
+</style>
+
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #6F253C;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #4d192a;
+  width: 200px;
+  height: 60px;
+}
+
+.button:hover {background-color: #602034}
+
+.button:active {
+  background-color: #602034;
+  box-shadow: 0 5px #39131f;
+  transform: translateY(4px);
+}
+
+body{
+  color: white;
+}
+</style>
+
+
+
+
+
+
+
+
+
+    </head>
+    <body style="overflow-y: hidden;">
+      <p align="center"><img src="static/images/symphony.png" style="width: 170px;"></p>
+
+   <hr color="#C0C0C0" size="0.5" width="90%">
+
+
+
+   <div class="container" style="margin-top: -75px;">
+  <h2>Carousel Example</h2>  
+  <div id="myCarousel" class="carousel slide" data-interval="false">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" style="background-image: linear-gradient(to bottom right, #d3bc92 0%, #bc9a5c 100%);">
+      <div class="item active">
+        
+
+        <div class="container" >
+            <div class="row " >
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+                    <form role="form" method="post" id="reused_form" ;>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="name"> Your Name</label>
+                                <input type="text" class="form-control" id="name" name="NAME" required>
+                            </div>
+                            
+                            <div class="col-sm-6 form-group">
+                                <label for="number"> Phone Number</label>
+                                <input type="Number" class="form-control" id="number" name="PHNO" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="email"> Email</label>
+                                <input type="email" class="form-control" id="email" name="EMAIL" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="birthdate"> Date of Birth</label>
+                                <input type="date" class="form-control" id="date" name="DOB" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="anniversary"> Anniversary Date</label>
+                                <input type="date" class="form-control" id="date" name="AD" required>
+                            </div>
+                        </div>
+
+     
+             
+   
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+
+
+
+
+
+   
+
+      <div class="item">
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+               
+
+                         <label> How did you know about us?</label><br>
+                             <div class="row">
+                              <div class="col-sm-5 form-group">
+                                <label class="checkbox-inline check1"  style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Butler">Butler&nbsp&nbsp&nbsp</label>
+                              </div>
+                              <div class="col-sm-7 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Resort/Hotel reservation"> Resort/Hotel reservation&nbsp&nbsp&nbsp</label>
+                              </div>
+                             </div>
+                             <div class="row">
+                              <div class="col-sm-5 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Travel Agent/Tour Operator"> Travel Agent/Tour Operator&nbsp&nbsp&nbsp</label>
+                              </div>
+                              <div class="col-sm-7 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Word of Mouth">  Word of Mouth&nbsp&nbsp&nbsp</label>
+                              </div>
+                             </div>
+                             <div class="row">
+                              <div class="col-sm-5 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Magazines">  Magazines&nbsp&nbsp&nbsp</label>
+                              </div>
+                              <div class="col-sm-7 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                               <input type="checkbox" name="US" value="Other RHG/Six Senses Hotels or resorts"> Other RHG/Six Senses Hotels or resorts&nbsp&nbsp&nbsp</label>
+                              </div>
+                             </div>
+                             <div class="row">
+                              <div class="col-sm-5 form-group">
+                                <label class="checkbox-inline check1" style="font-weight: bold;">
+                                <input type="checkbox" name="US" value="Others">Others</label>
+                              </div>
+                             </div>
+                                <br>
+                        
+                         <label style="text-align: justify;">Yes, I agree to receive commercial messages, email from Radisson Hotel Group relating to Hotel products and services including special offers and promotions, I understand that even if I don’t check this box, I may receive transactional messages. I may opt out of marketing communication at any time and will be given the option to do so in each communication.  </label><br>     
+                              
+                              <input type="radio" name="P" value="Yes" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
+                              
+                              <input type="radio" name="P" value="No"><label>&nbspNo</label>
+                            
+
+                       
+                    
+          
+                    
+             
+   
+             </div>
+           </div>
+         </div>
+      </div>
+    
+      <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+      
+                 <label>What did you come here for?</label><br>
+                           <input type="radio" name="MEAL" value="Meal" required> <label>Meal&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Breakfast"> <label>Breakfast&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Lunch"> <label>Lunch&nbsp&nbsp&nbsp</label>
+                           <input type="radio" name="MEAL" value="Dinner"> <label>Dinner</label>
+                           <br>
+
+                         <br>
+
+               <label>How would you rate table reservation handling?</label>
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q1" id="veryhappy" value="1" required>
+                               <label for="veryhappy"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q1" id="happy" value="2">
+                               <label for="happy"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q1" id="okay" value="3">
+                               <label for="okay"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q1" id="sad" value="4">
+                               <label for="sad"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q1" id="angry" value="5">
+                               <label for="angry"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+
+                        
+                         <label>How would you rate the greeting?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q2" id="veryhappy1"  value="1" required>
+                               <label for="veryhappy1"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q2" id="happy1"  value="2">
+                               <label for="happy1"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q2" id="okay1"  value="3">
+                               <label for="okay1"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q2" id="sad1"  value="4">
+                               <label for="sad1"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q2" id="angry1"  value="5">
+                               <label for="angry1"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+
+                          <label>How would you rate the variety of food and beverage menu?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q3" id="veryhappy2" value="1" required>
+                               <label for="veryhappy2"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q3" id="happy2" value="2">
+                               <label for="happy2"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q3" id="okay2" value="3">
+                               <label for="okay2"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q3" id="sad2" value="4">
+                               <label for="sad2"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q3" id="angry2" value="5">
+                               <label for="angry2"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                        
+
+                         
+                    
+        
+                    
+             
+   
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+       
+           <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+
+                     <label>How would you rate the server's knowledge of food and beverage selections?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q4" id="veryhappy3" value="1" required>
+                               <label for="veryhappy3"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q4" id="happy3" value="2">
+                               <label for="happy3"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q4" id="okay3" value="3">
+                               <label for="okay3"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q4" id="sad3" value="4">
+                               <label for="sad3"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q4" id="angry3" value="5">
+                               <label for="angry3"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+                           
+                           <label>How would you rate the quality of presentation of food?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q5" id="veryhappy4" value="1" required>
+                               <label for="veryhappy4"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q5" id="happy4" value="2">
+                               <label for="happy4"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q5" id="okay4" value="3">
+                               <label for="okay4"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q5" id="sad4" value="4">
+                               <label for="sad4"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q5" id="angry4" value="5">
+                               <label for="angry4"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+    
+                        <label>How would you rate the quality of presentation of beverage?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q6" id="veryhappy5" value="1" required>
+                               <label for="veryhappy5"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q6" id="happy5" value="2">
+                               <label for="happy5"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q6" id="okay5" value="3">
+                               <label for="okay5"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q6" id="sad5" value="4">
+                               <label for="sad5"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q6" id="angry5" value="5">
+                               <label for="angry5"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+
+                            <label>How would you rate the restaurant atmosphere?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q7" id="veryhappy6" value="1" required>
+                               <label for="veryhappy6"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q7" id="happy6" value="2">
+                               <label for="happy6"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q7" id="okay6" value="3">
+                               <label for="okay6"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q7" id="sad6" value="4">
+                               <label for="sad6"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q7" id="angry6" value="5">
+                               <label for="angry6"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                        
+                            
+                           
+
+                    
+    
+                    
+             
+   
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+        <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+
+                     <label>How would you rate the bill handling?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q8" id="veryhappy7" value="1" required>
+                               <label for="veryhappy7"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q8" id="happy7" value="2">
+                               <label for="happy7"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q8" id="okay7" value="3">
+                               <label for="okay7"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q8" id="sad7" value="4">
+                               <label for="sad7"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q8" id="angry7" value="5">
+                               <label for="angry7"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+
+                            <label>How would you rate the value of money?</label>     
+
+                             <div class="fbRating">
+                               <input type="radio" name="Q9" id="veryhappy8" value="1" required>
+                               <label for="veryhappy8"><img src="static/images/veryhappy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q9" id="happy8" value="2">
+                               <label for="happy8"><img src="static/images/happy.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q9" id="okay8" value="3">
+                               <label for="okay8"><img src="static/images/okay.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q9" id="sad8" value="4">
+                               <label for="sad8"><img src="static/images/sad.png" style="width: 3.125rem;"></label>
+                               <input type="radio" name="Q9" id="angry8" value="5">
+                               <label for="angry8"><img src="static/images/angry.png" style="width: 3.125rem;"></label>
+                             </div>
+                             <br>
+
+                             <label>Did the manager visit your table?</label><br>     
+                              
+                              <input type="radio" name="Q10" value="Yes" required><label>&nbspYes&nbsp&nbsp&nbsp</label>
+                              
+                              <input type="radio" name="Q10" value="No"><label>&nbspNo</label>
+                              <br>
+                            <br>
+
+                   <label>How do you rate the speed of service?</label>     
+
+        <div id="full-stars-example-two">
+          <div class="rating-group">
+        <input disabled checked class="rating__input rating__input--none" name="RATING" id="rating-none" value="0" type="radio" required>
+        <label aria-label="1 star" class="rating__label" for="rating-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+        <input class="rating__input" name="RATING" id="rating-1" value="1" type="radio">
+        <label aria-label="2 stars" class="rating__label" for="rating-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+        <input class="rating__input" name="RATING" id="rating-2" value="2" type="radio">
+        <label aria-label="3 stars" class="rating__label" for="rating-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+        <input class="rating__input" name="RATING" id="rating-3" value="3" type="radio">
+        <label aria-label="4 stars" class="rating__label" for="rating-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+        <input class="rating__input" name="RATING" id="rating-4" value="4" type="radio">
+        <label aria-label="5 stars" class="rating__label" for="rating-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+        <input class="rating__input" name="RATING" id="rating-5" value="5" type="radio">
+          </div>
+        </div>
+                     
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+
+
+       <div class="item">
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-6 col-md-offset-3 form-container" style="height: 480px;">
+                    <h2>We'd appreciate your Feedback</h2> 
+                    <br><br>
+                     
+
+                            <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="comment2"> Your Favorite Restaurant?</label>
+                                <textarea class="form-control" type="textarea" name="FR" id="comment2" placeholder="Your Favorite Restaurant." maxlength="6000" rows="1" required></textarea>
+                            </div>
+                            </div>
+                            
+                            <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="comment3"> Comments</label>
+                                <textarea class="form-control" type="textarea" name="CM" id="comment3" placeholder="Your Comment." maxlength="6000" rows="4" required></textarea>
+                            </div>
+                            </div>
+
+
+
+                        
+
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                               <p align="center"><button type="submit" class="button">Send </button></p>
+                            </div>
+                        </div>
+
+                    
+                    </form>
+                    
+             
+   
+             </div>
+           </div>
+         </div>
+      </div>
+
+
+
+
+
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+       
+                    
+                    <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
+                    <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                </div>
+            </div>
+            <br><br><br><br><br>
+        </div>
+         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+         <script  src="js/index.js"></script>
+
+
+
+    </body>
+</html>

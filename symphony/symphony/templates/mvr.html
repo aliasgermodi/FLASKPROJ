@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Symphony Dashboard</title>
+  <!-- Favicon -->
+  <link href="../static/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="../static/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="../static/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="../static/css/argon.css?v=1.0.0" rel="stylesheet">
+
+
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/argon.css') }}"> 
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
+  <style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+#chartdiv1 {
+  width: 100%;
+  height: 350px;
+}
+
+#chartdiv2 {
+  width: 100%;
+  height: 350px;
+}
+
+
+.nav-link{
+    font-weight: bold;
+  }
+
+ .nav-link:hover, .w3-bar-item.active a{
+    background-color: rgba(103, 183, 220,0.9) !important;
+  }
+
+
+</style>
+
+
+<style> 
+input[type=text] {
+  width: 160px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: white;
+  padding: 12px 20px 12px 12px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 25%;
+}
+</style>
+
+<style>
+.buttons {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #67b7dc;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 10px;
+  font-weight:bold;
+  padding: 0px;
+  width: 90px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 12px;
+  margin-left: 0px;
+  height: 30px;
+}
+
+.buttons span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttons span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttons:hover span {
+  padding-right: 25px;
+}
+
+.buttons:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+
+</head>
+
+<body>
+
+  <!-- Main content -->
+  <div class="main-content" style="padding: 20px;">
+
+    <div class="header pb-4 pt-5 pt-md-3" style="background-color: rgba(103, 183, 220,0.1)">
+      <div class="container-fluid">
+       
+
+
+           <!-- Card stats -->
+          <div class="row">
+
+          
+             <a href="/get_total_today"><button class="buttons" style="width: 130px; height: 35px;"><span>HOME </span></button></a>
+             &nbsp&nbsp<a href="/reports"><button class="buttons" style="width: 130px; height: 35px;"><span>BACK </span></button></a>
+        
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <br>
+
+                <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Most Visited Restaurant</h3>
+            </div>
+            <div class="table-responsive">
+              <table id="testTable" class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">No. of times visited</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+            
+                  <tr>
+                     <th scope="row">Les Délicats</th>
+                     <td>{{rest1}}</td>
+                  </tr>
+                   <tr>
+                     <th scope="row">Cucina</th>
+                     <td>{{rest2}}</td>
+                  </tr>
+                   <tr>
+                     <th scope="row">Chococafẽ</th>
+                     <td>{{rest3}}</td>
+                  </tr>
+                   <tr>
+                     <th scope="row">Luna</th>
+                     <td>{{rest4}}</td>
+                  </tr>
+              
+
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </div>
+      </div> 
+
+
+
+<br>
+ <button id="btnExport" class="buttons" onclick="javascript:xport.toXLS('testTable');" style="width: 130px;"><span>DOWNLOAD </span></button>
+
+
+        <br><br>
+<br>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JS -->
+  <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+
+
+
+
+  <script>
+var xport = {
+  _fallbacktoCSV: true,  
+  toXLS: function(tableId, filename) {   
+    this._filename = (typeof filename == 'undefined') ? tableId : filename;
+    
+    //var ieVersion = this._getMsieVersion();
+    //Fallback to CSV for IE & Edge
+    if ((this._getMsieVersion() || this._isFirefox()) && this._fallbacktoCSV) {
+      return this.toCSV(tableId);
+    } else if (this._getMsieVersion() || this._isFirefox()) {
+      alert("Not supported browser");
+    }
+
+    //Other Browser can download xls
+    var htmltable = document.getElementById(tableId);
+    var html = htmltable.outerHTML;
+
+    this._downloadAnchor("data:application/vnd.ms-excel" + encodeURIComponent(html), 'xls'); 
+  },
+  toCSV: function(tableId, filename) {
+    this._filename = (typeof filename === 'undefined') ? tableId : filename;
+    // Generate our CSV string from out HTML Table
+    var csv = this._tableToCSV(document.getElementById(tableId));
+    // Create a CSV Blob
+    var blob = new Blob([csv], { type: "text/csv" });
+
+    // Determine which approach to take for the download
+    if (navigator.msSaveOrOpenBlob) {
+      // Works for Internet Explorer and Microsoft Edge
+      navigator.msSaveOrOpenBlob(blob, this._filename + ".csv");
+    } else {      
+      this._downloadAnchor(URL.createObjectURL(blob), 'csv');      
+    }
+  },
+  _getMsieVersion: function() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+    }
+
+    var trident = ua.indexOf("Trident/");
+    if (trident > 0) {
+      // IE 11 => return version number
+      var rv = ua.indexOf("rv:");
+      return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+    }
+
+    var edge = ua.indexOf("Edge/");
+    if (edge > 0) {
+      // Edge (IE 12+) => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+    }
+
+    // other browser
+    return false;
+  },
+  _isFirefox: function(){
+    if (navigator.userAgent.indexOf("Firefox") > 0) {
+      return 1;
+    }
+    
+    return 0;
+  },
+  _downloadAnchor: function(content, ext) {
+      var anchor = document.createElement("a");
+      anchor.style = "display:none !important";
+      anchor.id = "downloadanchor";
+      document.body.appendChild(anchor);
+
+      // If the [download] attribute is supported, try to use it
+      
+      if ("download" in anchor) {
+        anchor.download = this._filename + "." + ext;
+      }
+      anchor.href = content;
+      anchor.click();
+      anchor.remove();
+  },
+  _tableToCSV: function(table) {
+    // We'll be co-opting `slice` to create arrays
+    var slice = Array.prototype.slice;
+
+    return slice
+      .call(table.rows)
+      .map(function(row) {
+        return slice
+          .call(row.cells)
+          .map(function(cell) {
+            return '"t"'.replace("t", cell.textContent);
+          })
+          .join(",");
+      })
+      .join("\r\n");
+  }
+};
+  </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

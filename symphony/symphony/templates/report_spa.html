@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Symphony Dashboard</title>
+  <!-- Favicon -->
+  <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="./assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="./assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/argon.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+  <style>
+#chartdiv,#chartdiv1,#chartdiv2,#chartdiv3, #chartdiv4, #chartdiv5, #chartdiv6, #chartdiv7, #chartdiv8{
+  width: 100%;
+  height: 300px;
+}
+
+
+
+.nav-link{
+    font-weight: bold;
+  }
+
+ .nav-link:hover, .w3-bar-item.active a{
+    background-color: rgba(103, 183, 220,0.9) !important;
+  }
+
+</style>
+
+<style>
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #67b7dc;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 13px;
+  padding: 0px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  height: 45px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+
+</head>
+
+<body>
+
+  <!-- Main content -->
+  <div class="main-content">
+
+    
+    <!-- Header -->
+    <div class="header pb-4 pt-5 pt-md-6" style="background-color: rgba(103, 183, 220,0.1)">
+      <div class="container-fluid">
+       
+          <!-- Card stats -->
+          <div class="row">
+           
+        
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Visitors at<br> SPA</h5>
+                      <span class="h2 font-weight-bold mb-0">{{single}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <img src="static/images/six_spa.png" style="width: 75px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+         
+         <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">End Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{enddate}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+
+
+
+        <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Start Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{startdate}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-xl-3 col-lg-6">
+           
+         
+                        <form>
+                        <button class="button" style="vertical-align:middle" type=button name=print value="Print" onClick="window.print()"><strong><span>DOWNLOAD </span></strong></button>
+                      </form>
+                      
+                        <a href="/get_total_today"><button class="button" style="vertical-align:middle"><strong><span>HOME </span></strong></button></a>
+                    </div>
+                  </div>
+           
+        
+          
+
+
+            <br>
+
+                     
+
+
+
+
+
+      </div>
+      <br>  
+
+
+
+    <div class="">
+      <div class="">
+        <div class="">
+          <div class="">
+     <div class="row">
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our SPA Receptionist?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our SPA Therapist?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv1"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our SPA reservation?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv2"></div>
+              </div>
+            </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our Welcome at the SPA?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv3"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our SPA ambience?</h3><br>
+              <div class="row align-items-center">
+                  <div id="chartdiv4"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our quality of SPA treatment?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv5"></div>
+              </div>
+            </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our choice of SPA treatments?</h3>
+              <div class="row align-items-center">
+                  <div id="chartdiv6"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our SPA facilities?</h3><br>
+              <div class="row align-items-center">
+                  <div id="chartdiv7"></div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+            <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
+                <h3>How would you rate our Gym?</h3><br>
+              <div class="row align-items-center">
+                  <div id="chartdiv8"></div>
+              </div>
+            </div>
+      </div>
+  </div>
+        </div>
+       </div>
+   </div>
+   <br><br><br><br>
+
+
+<br><br><br><br><br>
+
+
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JS -->
+  <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <!-- Chart code -->
+
+
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq1_1}}",
+    "points": {{sq1_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq1_2}} ",
+    "points": {{sq1_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq1_3}}  ",
+    "points": {{sq1_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq1_4}}   ",
+    "points": {{sq1_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq1_5}}    ",
+    "points": {{sq1_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv1", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq2_1}}",
+    "points": {{sq2_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq2_2}} ",
+    "points": {{sq2_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq2_3}}  ",
+    "points": {{sq2_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq2_4}}   ",
+    "points": {{sq2_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq2_5}}    ",
+    "points": {{sq2_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv2", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq3_1}}",
+    "points": {{sq3_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq3_2}} ",
+    "points": {{sq3_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq3_3}}  ",
+    "points": {{sq3_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq3_4}}   ",
+    "points": {{sq3_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq3_5}}    ",
+    "points": {{sq3_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv3", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq4_1}}",
+    "points": {{sq4_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq4_2}} ",
+    "points": {{sq4_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq4_3}}  ",
+    "points": {{sq4_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq4_4}}   ",
+    "points": {{sq4_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq4_5}}    ",
+    "points": {{sq4_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv4", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq5_1}}",
+    "points": {{sq5_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq5_2}} ",
+    "points": {{sq5_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq5_3}}  ",
+    "points": {{sq5_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq5_4}}   ",
+    "points": {{sq5_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq5_5}}    ",
+    "points": {{sq5_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv5", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq6_1}}",
+    "points": {{sq6_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq6_2}} ",
+    "points": {{sq6_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq6_3}}  ",
+    "points": {{sq6_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq6_4}}   ",
+    "points": {{sq6_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq6_5}}    ",
+    "points": {{sq6_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv6", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq7_1}}",
+    "points": {{sq7_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq7_2}} ",
+    "points": {{sq7_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq7_3}}  ",
+    "points": {{sq7_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq7_4}}   ",
+    "points": {{sq7_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq7_5}}    ",
+    "points": {{sq7_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv7", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq8_1}}",
+    "points": {{sq8_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq8_2}} ",
+    "points": {{sq8_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq8_3}}  ",
+    "points": {{sq8_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq8_4}}   ",
+    "points": {{sq8_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq8_5}}    ",
+    "points": {{sq8_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv8", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+    "name": "{{sq9_1}}",
+    "points": {{sq9_1}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/veryhappy.png"
+}, {
+    "name": "{{sq9_2}} ",
+    "points": {{sq9_2}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/happy.png"
+}, {
+    "name": "{{sq9_3}}  ",
+    "points": {{sq9_3}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/okay.png"
+}, {
+    "name": "{{sq9_4}}   ",
+    "points": {{sq9_4}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/sad.png"
+}, {
+    "name": "{{sq9_5}}    ",
+    "points": {{sq9_5}},
+    "color": chart.colors.next(),
+    "bullet": "static/images/angry.png"
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.inside = true;
+categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+categoryAxis.renderer.labels.template.fontSize = 20;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+valueAxis.renderer.labels.template.disabled = true;
+valueAxis.min = 0;
+
+// Do not crop bullets
+chart.maskBullets = false;
+
+// Remove padding
+chart.paddingBottom = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "points";
+series.dataFields.categoryX = "name";
+series.columns.template.propertyFields.fill = "color";
+series.columns.template.propertyFields.stroke = "color";
+series.columns.template.column.cornerRadiusTopLeft = 15;
+series.columns.template.column.cornerRadiusTopRight = 15;
+series.columns.template.tooltipText = "[bold]{valueY}[/b]";
+
+// Add bullets
+var bullet = series.bullets.push(new am4charts.Bullet());
+var image = bullet.createChild(am4core.Image);
+image.horizontalCenter = "middle";
+image.verticalCenter = "bottom";
+image.dy = 20;
+image.y = am4core.percent(100);
+image.propertyFields.href = "bullet";
+image.tooltipText = series.columns.template.tooltipText;
+image.propertyFields.fill = "color";
+image.filters.push(new am4core.DropShadowFilter());
+</script>
+
+
+</body>
+
+</html>
