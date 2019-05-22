@@ -3276,7 +3276,7 @@ def get_total_tofrom():
 				
 
 		rest_total = rest1+rest2+rest3+rest4+rest5+rest6
-		total = rest_total + sq1 + sq2 + sq3 + sq4 + sq5
+		total = rest_total + total2
 		print (total)
 		print(rest_total)
 		print(total2)

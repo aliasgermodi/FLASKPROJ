@@ -48,11 +48,11 @@
   text-align: center;
   font-size: 13px;
   padding: 0px;
-  width: 150px;
+  width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  height: 35px;
+  height: 45px;
 }
 
 .button span {
@@ -85,7 +85,6 @@
 </head>
 
 <body>
-  <!-- Sidenav -->
   <!-- Main content -->
   <div class="main-content">
 
@@ -103,42 +102,84 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Visitors at Restaurant</h5>
+                        <h5 class="card-title text-uppercase text-muted mb-0">Visitors at<br> SPA</h5>
                       <span class="h2 font-weight-bold mb-0">{{total}}</span>
                     </div>
+                    <div class="col-auto" style="padding-top: 15px; padding-bottom: 15px;">
+                      <img src="static/images/{{logo}}" style="width: 100px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+         
+         <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">End Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{enddate}}</span>
+                    </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#A267DB">
-                         <i class="fa fa-users w3-xxxlarge"></i>
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
+                        <i class="fas fa-calendar-alt"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-6" style="background-color: transparent;">
-              <div class="card card-stats mb-4 mb-xl-0" style="background-color: transparent; border:none;">
+ 
+
+
+
+        <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <form>
-                        <button class="button" style="vertical-align:middle" type=button name=print value="Print" onClick="window.print()"><span>Download</span></button>
-                      </form>
-                         <a href="/get_total"><button class="button" style="vertical-align:middle"><span>HOME </span></button></a>
-                      
-
+                        <h5 class="card-title text-uppercase text-muted mb-0">Start Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{startdate}}</span>
                     </div>
-                    <div class="col">
-
-                      <h6>Start Date: </h6><p>{{startdate}}</p>
-                      <h6>End Date: </h6><p>{{enddate}}</p>
+                    <div class="col-auto">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
                     </div>
-                    
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+
+
+            <div class="col-xl-3 col-lg-6">
+           
+         
+                        <form>
+                        <button class="button" style="vertical-align:middle" type=button name=print value="Print" onClick="window.print()"><strong><span>DOWNLOAD </span></strong></button>
+                      </form>
+                      
+                        <a href="/get_total_today"><button class="button" style="vertical-align:middle"><strong><span>HOME </span></strong></button></a>
+                    </div>
+                  </div>
+           
+        
+          
+
+
+            <br>
+
+                     
+
+
+
+
+
       </div>
       <br>  
 
@@ -184,7 +225,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate the quality of presentation of food?</h3><br>
+                <h3>How would you rate the quality of presentation of food?</h3>
               <div class="row align-items-center">
                   <div id="chartdiv4"></div>
               </div>
@@ -192,7 +233,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate the quality of presentation of beverage?</h3><br>
+                <h3>How would you rate the quality of presentation of beverage?</h3>
               <div class="row align-items-center">
                   <div id="chartdiv5"></div>
               </div>
@@ -211,7 +252,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate the bill handling?</h3>
+                <h3>How would you rate the bill handling?</h3><br>
               <div class="row align-items-center">
                   <div id="chartdiv7"></div>
               </div>
@@ -219,7 +260,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate the value of money?</h3>
+                <h3>How would you rate the value of money?</h3><br>
               <div class="row align-items-center">
                   <div id="chartdiv8"></div>
               </div>
@@ -271,22 +312,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q1_2}}",
+    "name": "{{q1_2}} ",
     "points": {{q1_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q1_3}} ",
+    "name": "{{q1_3}}  ",
     "points": {{q1_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q1_4}}  ",
+    "name": "{{q1_4}}   ",
     "points": {{q1_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q1_5}}   ",
+    "name": "{{q1_5}}    ",
     "points": {{q1_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -360,22 +401,22 @@ chart.data = [{
     "bullet": "static/images/veryhappy.png"
     
 }, {
-    "name": "{{q2_2}}",
+    "name": "{{q2_2}} ",
     "points": {{q2_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q2_3}} ",
+    "name": "{{q2_3}}  ",
     "points": {{q2_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q2_4}}  ",
+    "name": "{{q2_4}}   ",
     "points": {{q2_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q2_5}}   ",
+    "name": "{{q2_5}}    ",
     "points": {{q2_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -447,22 +488,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q3_2}}",
+    "name": "{{q3_2}} ",
     "points": {{q3_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q3_3}} ",
+    "name": "{{q3_3}}  ",
     "points": {{q3_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q3_4}}  ",
+    "name": "{{q3_4}}   ",
     "points": {{q3_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q3_5}}   ",
+    "name": "{{q3_5}}    ",
     "points": {{q3_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -534,22 +575,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q4_2}}",
+    "name": "{{q4_2}} ",
     "points": {{q4_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q4_3}} ",
+    "name": "{{q4_3}}  ",
     "points": {{q4_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q4_4}}  ",
+    "name": "{{q4_4}}   ",
     "points": {{q4_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q4_5}}   ",
+    "name": "{{q4_5}}    ",
     "points": {{q4_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -620,22 +661,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q5_2}}",
+    "name": "{{q5_2}} ",
     "points": {{q5_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q5_3}} ",
+    "name": "{{q5_3}}  ",
     "points": {{q5_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q5_4}}  ",
+    "name": "{{q5_4}}   ",
     "points": {{q5_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q5_5}}   ",
+    "name": "{{q5_5}}    ",
     "points": {{q5_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -706,22 +747,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q6_2}}",
+    "name": "{{q6_2}} ",
     "points": {{q6_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q6_3}} ",
+    "name": "{{q6_3}}  ",
     "points": {{q6_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q6_4}}  ",
+    "name": "{{q6_4}}   ",
     "points": {{q6_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q6_5}}   ",
+    "name": "{{q6_5}}    ",
     "points": {{q6_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -792,22 +833,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q7_2}}",
+    "name": "{{q7_2}} ",
     "points": {{q7_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q7_3}} ",
+    "name": "{{q7_3}}  ",
     "points": {{q7_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q7_4}}  ",
+    "name": "{{q7_4}}   ",
     "points": {{q7_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q7_5}}   ",
+    "name": "{{q7_5}}    ",
     "points": {{q7_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -878,22 +919,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q8_2}}",
+    "name": "{{q8_2}} ",
     "points": {{q8_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q8_3}} ",
+    "name": "{{q8_3}}  ",
     "points": {{q8_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q8_4}}  ",
+    "name": "{{q8_4}}   ",
     "points": {{q8_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q8_5}}   ",
+    "name": "{{q8_5}}    ",
     "points": {{q8_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -964,22 +1005,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{q9_2}}",
+    "name": "{{q9_2}} ",
     "points": {{q9_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{q9_3}} ",
+    "name": "{{q9_3}}  ",
     "points": {{q9_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{q9_4}}  ",
+    "name": "{{q9_4}}   ",
     "points": {{q9_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{q9_5}}  ",
+    "name": "{{q9_5}}    ",
     "points": {{q9_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"

@@ -57,7 +57,7 @@
       </button>
       <!-- Brand -->
  
-        <img src="static/images/kiran.png"  style="width: 180px;">
+        <img src="static/images/symphony.png"  style="width: 180px;">
 
      
 
@@ -68,7 +68,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             
-                <img src="static/images/kiran.png" style="width: 180px;" >
+                <img src="static/images/symphony.png" style="width: 180px;" >
             
             <div class="col-6 collapse-close">
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
@@ -83,7 +83,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/get_total">
+            <a class="nav-link" href="/get_total_today">
               <img src="static/images/home.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;"> HOME</font>
             </a>
           </li>
@@ -93,13 +93,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/get_spa">
+            <a class="nav-link" href="/get_rate_spa_today">
                <img src="static/images/spa.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">SPA</font>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users"  style="background-color: rgba(103, 183, 220,0.9);">
-               <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">USERS</font>
+               <img src="static/images/user.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">GUESTS</font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reports">
+               <img src="static/images/reports.png" class="icon1" style="width: 30px;" > &nbsp&nbsp&nbsp<font size="3px;">REPORTS</font>
             </a>
           </li>
           <li class="nav-item">
@@ -165,10 +170,10 @@
                     <th scope="row">
                     <div class="row">
                       <div class="col-sm-4">
-                          <h4>Date of Birth: {{ data['dob'] }}</h4>
+                          <h4>Date of Birth: {{ data['rdob'] }}</h4>
                       </div>
                       <div class="col-sm-4">
-                          <h4>Anniversary Date: {{ data['ad'] }}</h4>
+                          <h4>Anniversary Date: {{ data['rad'] }}</h4>
                       </div>  
                       <div class="col-sm-4">
                           <h4>Date of Visit: {{ data['dov'] }}</h4>
@@ -190,7 +195,7 @@
                 <tbody>
                   <tr>
                     <th scope="row">
-                    <h4>How did you know about us?</h4><br>  
+                    <h4>How did you know about us?</h4>{{ data['us'] }}<br>  
                     <h4>Yes, I agree to receive commercial messages, email from Radisson Hotel Group relating to Hotel products and services including<br> special offers and promotions, I understand that even if I don’t check this box, I may receive transactional messages. I may opt<br> out of marketing communication at any time and will be given the option to do so in each communication.</h4><br>
                     <h4>What did you come here for?</h4>{{ data['meal'] }} <br>
                     <h4>How would you rate table reservation handling?</h4>
@@ -223,6 +228,7 @@
             </div>
         </div>
     </div>
+    
    
 <br>
   <script>

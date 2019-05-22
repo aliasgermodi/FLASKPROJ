@@ -46,11 +46,11 @@
   text-align: center;
   font-size: 13px;
   padding: 0px;
-  width: 150px;
+  width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  height: 35px;
+  height: 45px;
 }
 
 .button span {
@@ -105,39 +105,80 @@
                       <span class="h2 font-weight-bold mb-0">{{single}}</span>
                     </div>
                     <div class="col-auto">
+                      <img src="static/images/six_spa.png" style="width: 75px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+         
+         <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">End Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{enddate}}</span>
+                    </div>
+                    <div class="col-auto">
                       <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-calendar-alt"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-6" style="background-color: transparent;">
-              <div class="card card-stats mb-4 mb-xl-0" style="background-color: transparent; border:none;">
+ 
+
+
+
+        <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-
-                      <form>
-                        <button class="button" style="vertical-align:middle" type=button name=print value="Print" onClick="window.print()"><span>Download</span></button>
-                      </form>
-                      
-                        <a href="/get_total"><button class="button" style="vertical-align:middle"><span>HOME </span></button></a>
-                      
-                      
+                        <h5 class="card-title text-uppercase text-muted mb-0">Start Date</h5>
+                        <br>
+                      <span class="h2 font-weight-bold mb-0">{{startdate}}</span>
                     </div>
-                    <div class="col">
-                      <h6>Start Date: </h6><p>{{startdate}}</p>
-                      <h6>End Date: </h6><p>{{enddate}}</p>
+                    <div class="col-auto">
+                      <div class="icon icon-shape text-white rounded-circle shadow" style="background-color:#6894DD;">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
                     </div>
-                    
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+
+
+            <div class="col-xl-3 col-lg-6">
+           
+         
+                        <form>
+                        <button class="button" style="vertical-align:middle" type=button name=print value="Print" onClick="window.print()"><strong><span>DOWNLOAD </span></strong></button>
+                      </form>
+                      
+                        <a href="/get_total_today"><button class="button" style="vertical-align:middle"><strong><span>HOME </span></strong></button></a>
+                    </div>
+                  </div>
+           
+        
+          
+
+
+            <br>
+
+                     
+
+
+
+
+
       </div>
       <br>  
 
@@ -158,7 +199,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate our SPA Therapist?</h3><br>
+                <h3>How would you rate our SPA Therapist?</h3>
               <div class="row align-items-center">
                   <div id="chartdiv1"></div>
               </div>
@@ -193,7 +234,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate our quality of SPA treatment?</h3><br>
+                <h3>How would you rate our quality of SPA treatment?</h3>
               <div class="row align-items-center">
                   <div id="chartdiv5"></div>
               </div>
@@ -212,7 +253,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate our SPA facilities?</h3>
+                <h3>How would you rate our SPA facilities?</h3><br>
               <div class="row align-items-center">
                   <div id="chartdiv7"></div>
               </div>
@@ -220,7 +261,7 @@
       </div>
       <div class="col-md-4">
             <div class="card-header" style="background-color: rgba(103, 183, 220,0.1)">
-                <h3>How would you rate our Gym?</h3>
+                <h3>How would you rate our Gym?</h3><br>
               <div class="row align-items-center">
                   <div id="chartdiv8"></div>
               </div>
@@ -273,22 +314,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq1_2}}",
+    "name": "{{sq1_2}} ",
     "points": {{sq1_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq1_3}} ",
+    "name": "{{sq1_3}}  ",
     "points": {{sq1_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq1_4}}  ",
+    "name": "{{sq1_4}}   ",
     "points": {{sq1_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq1_5}}   ",
+    "name": "{{sq1_5}}    ",
     "points": {{sq1_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -360,22 +401,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq2_2}}",
+    "name": "{{sq2_2}} ",
     "points": {{sq2_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq2_3}} ",
+    "name": "{{sq2_3}}  ",
     "points": {{sq2_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq2_4}}  ",
+    "name": "{{sq2_4}}   ",
     "points": {{sq2_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq2_5}}   ",
+    "name": "{{sq2_5}}    ",
     "points": {{sq2_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -447,22 +488,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq3_2}}",
+    "name": "{{sq3_2}} ",
     "points": {{sq3_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq3_3}} ",
+    "name": "{{sq3_3}}  ",
     "points": {{sq3_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq3_4}}  ",
+    "name": "{{sq3_4}}   ",
     "points": {{sq3_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq3_5}}   ",
+    "name": "{{sq3_5}}    ",
     "points": {{sq3_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -534,22 +575,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq4_2}}",
+    "name": "{{sq4_2}} ",
     "points": {{sq4_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq4_3}} ",
+    "name": "{{sq4_3}}  ",
     "points": {{sq4_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq4_4}}  ",
+    "name": "{{sq4_4}}   ",
     "points": {{sq4_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq4_5}}   ",
+    "name": "{{sq4_5}}    ",
     "points": {{sq4_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -620,22 +661,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq5_2}}",
+    "name": "{{sq5_2}} ",
     "points": {{sq5_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq5_3}} ",
+    "name": "{{sq5_3}}  ",
     "points": {{sq5_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq5_4}}  ",
+    "name": "{{sq5_4}}   ",
     "points": {{sq5_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq5_5}}   ",
+    "name": "{{sq5_5}}    ",
     "points": {{sq5_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -706,22 +747,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq6_2}}",
+    "name": "{{sq6_2}} ",
     "points": {{sq6_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq6_3}} ",
+    "name": "{{sq6_3}}  ",
     "points": {{sq6_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq6_4}}  ",
+    "name": "{{sq6_4}}   ",
     "points": {{sq6_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq6_5}}   ",
+    "name": "{{sq6_5}}    ",
     "points": {{sq6_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -793,22 +834,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq7_2}}",
+    "name": "{{sq7_2}} ",
     "points": {{sq7_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq7_3}} ",
+    "name": "{{sq7_3}}  ",
     "points": {{sq7_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq7_4}}  ",
+    "name": "{{sq7_4}}   ",
     "points": {{sq7_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq7_5}}   ",
+    "name": "{{sq7_5}}    ",
     "points": {{sq7_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -880,22 +921,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq8_2}}",
+    "name": "{{sq8_2}} ",
     "points": {{sq8_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq8_3}} ",
+    "name": "{{sq8_3}}  ",
     "points": {{sq8_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq8_4}}  ",
+    "name": "{{sq8_4}}   ",
     "points": {{sq8_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq8_5}}   ",
+    "name": "{{sq8_5}}    ",
     "points": {{sq8_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
@@ -966,22 +1007,22 @@ chart.data = [{
     "color": chart.colors.next(),
     "bullet": "static/images/veryhappy.png"
 }, {
-    "name": "{{sq9_2}}",
+    "name": "{{sq9_2}} ",
     "points": {{sq9_2}},
     "color": chart.colors.next(),
     "bullet": "static/images/happy.png"
 }, {
-    "name": "{{sq9_3}} ",
+    "name": "{{sq9_3}}  ",
     "points": {{sq9_3}},
     "color": chart.colors.next(),
     "bullet": "static/images/okay.png"
 }, {
-    "name": "{{sq9_4}}  ",
+    "name": "{{sq9_4}}   ",
     "points": {{sq9_4}},
     "color": chart.colors.next(),
     "bullet": "static/images/sad.png"
 }, {
-    "name": "{{sq9_5}}   ",
+    "name": "{{sq9_5}}    ",
     "points": {{sq9_5}},
     "color": chart.colors.next(),
     "bullet": "static/images/angry.png"
